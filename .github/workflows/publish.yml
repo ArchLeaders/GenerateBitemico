@@ -26,7 +26,7 @@ jobs:
             runtime: win-x64
 
     env:
-      proj: "ActorLoader"
+      proj: "GenerateBitemico"
 
     steps:
       - uses: actions/checkout@master
@@ -35,7 +35,7 @@ jobs:
         with:
           dotnet-version: "7.0.x"
 
-      - name: Publish ActorLoader
+      - name: Publish Generate Bitemico
         run: dotnet publish src/${{ env.proj }}.csproj -r ${{ matrix.platform.runtime }} --configuration Release -p:Version=${{ github.event.release.tag_name }} --output ${{ matrix.platform.name }} --sc false -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true
 
       - name: Upload artifacts
